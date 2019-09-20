@@ -21,16 +21,23 @@ def parser( html ) :
         price = row.find_all('span', class_ = "price regular")
 
         items.append({
-            'title': cols[0].text
+            'title': cols[0].text,
+            'price': price[0].text
         })
-        # print(cols)
 
     print(items)
 
 def main() :
     b = Bot()
-    print(parser(get_html(URL)))
+
+    file = open('url.txt', 'r')
+
+    for line in file :
+        new_URL = line
+
+    file.close()
+
+    print(parser(get_html(new_URL)))
 
 if __name__ == '__main__' :
     main()
-
